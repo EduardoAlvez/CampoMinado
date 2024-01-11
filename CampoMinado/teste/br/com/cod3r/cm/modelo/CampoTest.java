@@ -58,7 +58,7 @@ class CampoTest {
 	}
 
 	@Test
-	void testAdicionarVizinhoNaoVizinho() {
+	void testAdicionarNaoVizinho() {
 		Campo vizinho = new Campo(5, 5);
 		boolean rsultado = campo.adicionarVizinho(vizinho);
 		assertFalse(rsultado);
