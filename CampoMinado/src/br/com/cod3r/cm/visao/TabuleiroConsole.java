@@ -48,7 +48,8 @@ public class TabuleiroConsole {
 				System.out.println(tabuleiro);
 
 				String digitado = valorDigitador("Digite o valor de (x,y): ");
-				Iterator<Integer> xy = Arrays.stream(digitado.split(",")).map(e -> Integer.parseInt(e.trim())).iterator();
+				Iterator<Integer> xy = Arrays.stream(digitado.split(",")).map(e -> Integer.parseInt(e.trim()))
+						.iterator();
 
 				digitado = valorDigitador("1 - Abrir \n2 - (Des)Marcar");
 				if ("1".equals(digitado)) {
@@ -57,10 +58,12 @@ public class TabuleiroConsole {
 					tabuleiro.alternarMarcacao(xy.next(), xy.next());
 				}
 			}
-			
+
+			System.out.println(tabuleiro);
 			System.out.println("Você ganhou!!!");
 		} catch (ExplosaoException e) {
 
+			System.out.println(tabuleiro);
 			System.out.println("Você perdeu!");
 		}
 	}

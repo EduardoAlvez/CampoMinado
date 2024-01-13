@@ -58,63 +58,68 @@ public class Campo {
 				vizinhos.forEach(v -> v.abrir());
 			}
 			return true;
-		}else {
-			return false;			
+		} else {
+			return false;
 		}
 	}
 
 	boolean vizinhacaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
-	
+
 	boolean minar() {
-		if(!minado) {
+		if (!minado) {
 			return this.minado = true;
 		}
 		return minado;
 	}
-	
+
 	boolean objetivoAlcancado() {
-		boolean desvendado = !minado && aberto; 
+		boolean desvendado = !minado && aberto;
 		boolean protegido = minado && marcado;
 		return desvendado || protegido;
 	}
-	
+
 	long minasNaVizinhaca() {
 		return vizinhos.stream().filter(v -> v.minado).count();
 	}
-	
+
 	void reiniciar() {
 		aberto = false;
 		minado = false;
 		marcado = false;
 	}
-	
+
 	public String toString() {
-		if(marcado) {
+		if (marcado) {
 			return "X";
-		}else if(aberto && minado) {
+		} else if (aberto && minado) {
 			return "*";
-		}else if (aberto && minasNaVizinhaca() > 0) {
-			return Long.toString(minasNaVizinhaca());			
-		}else if (aberto) {
+		} else if (aberto && minasNaVizinhaca() > 0) {
+			return Long.toString(minasNaVizinhaca());
+		} else if (aberto) {
 			return " ";
 		} else {
 			return "?";
 		}
 	}
+
 	boolean isMarcado() {
 		return marcado;
 	}
-	
+
 	boolean isAberto() {
 		return aberto;
 	}
-	
+
+	void setAberto(Boolean aberto) {
+		this.aberto = aberto;
+	}
+
 	boolean isFechado() {
 		return !isAberto();
 	}
-	
+
 	boolean isMinado() {
 		return minado;
 	}
@@ -127,5 +132,4 @@ public class Campo {
 		return COLUNA;
 	}
 
-	
 }
